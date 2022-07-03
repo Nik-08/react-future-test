@@ -1,5 +1,5 @@
-## Book search app creating with Redux/React JS/TypeScript and google books Api.
-
+## Book search 
+Book search app creating with Redux/React JS/TypeScript and google books Api.
 
 # Getting Started with Create React App
 
