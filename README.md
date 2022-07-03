@@ -1,6 +1,13 @@
 ## Book search 
 Book search app creating with Redux/React JS/TypeScript and google books Api.
 
+## Getting started
+  1. clone the [repo](https://github.com/Nik-08/react-future-test) then go to the project dir.
+  2. install dependencies with yarn or npm i.
+  3. yarn start or npm start to start.
+
+Other scripts You may check out in package.json.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
