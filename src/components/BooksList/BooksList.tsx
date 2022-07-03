@@ -1,24 +1,25 @@
-import React, { FC, useCallback } from "react";
+import { FC, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { selectors } from "../../store/feature/books";
-import { loadMore, setStartIndex } from "../../store/feature/books/slice";
+import { loadMore } from "../../store/feature/books/slice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { Container, Button, Spinner } from "../ui";
 import { Book } from "./Book/Book";
 import css from "./style.module.scss";
 
 export const BooksList: FC = () => {
-  const { items, loading, error, total } = useAppSelector(
+  const { items, loading, error, total, showMore } = useAppSelector(
     (state: AppState) => ({
       items: selectors.items(state),
       loading: selectors.loading(state),
       total: selectors.total(state),
       error: selectors.error(state),
+      showMore: selectors.showMore(state),
     })
   );
   const dispatch = useAppDispatch();
 
-  const showMore = useCallback(() => {
+  const showMoreHandler = useCallback(() => {
     dispatch(loadMore());
   }, [dispatch]);
 
@@ -38,8 +39,8 @@ export const BooksList: FC = () => {
         {loading ? <Spinner /> : null}
       </Container>
 
-      {items.length === 0 || items.length < 30 ? null : (
-        <Button text={"Show More"} type='button' onClick={showMore} />
+      {showMore && (
+        <Button text={"Show More"} type='button' onClick={showMoreHandler} />
       )}
     </>
   );

@@ -9,6 +9,7 @@ export const error = createSelector([state], ($state) => $state.error);
 export const total = createSelector([state], ($state) => $state.total);
 export const category = createSelector([state], ($state) => $state.category);
 export const orderBy = createSelector([state], ($state) => $state.orderBy);
+export const showMore = createSelector([state], ($state) => $state.showMore);
 
 export const startIndex = createSelector(
   [state],
