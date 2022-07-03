@@ -52,6 +52,7 @@ $bookNameColor: #000;
     font-size: 16px;
     text-decoration: underline;
     color: $categoryColor;
+    white-space: nowrap;
   }
 
   .book__name {

@@ -13,18 +13,10 @@ const categoryOptions = [
   "all",
   "art",
   "biography",
-  "business",
-  "comics",
   "computers",
-  "cooking",
-  "fiction",
-  "gardening",
-  "health",
   "history",
   "medical",
-  "nature",
   "poetry",
-  "science",
 ];
 
 const sortOptions = ["relevance", "newest"];

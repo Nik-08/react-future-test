@@ -23,6 +23,7 @@ const initialState: BooksState = {
   searchQuery: "",
   startIndex: 0,
   item: null,
+  showMore: true,
 };
 
 const client = axios.create({
@@ -58,7 +59,7 @@ export const search = createAsyncThunk<
   async (_, { rejectWithValue, getState }): Promise<any> => {
     try {
       const url = getUrlFromState(getState());
-
+      url.searchParams.set("startIndex", "0");
       const response = await client.get(url.href);
 
       if (!response) throw new Error("Server Error!");
@@ -84,6 +85,7 @@ export const loadMore = createAsyncThunk<
   async (_, { rejectWithValue, getState }): Promise<any> => {
     try {
       const url = getUrlFromState(getState());
+      url.searchParams.set("startIndex", String(getState().books.items.length));
 
       const response = await client.get(url.href);
 
@@ -174,11 +176,18 @@ export const booksSlice = createSlice({
       })
       .addCase(loadMore.fulfilled, (state, action: PayloadAction<any>) => {
         state.loading = false;
-        state.items = [...state.items, ...action.payload.items];
+
+        console.log(action.payload.items);
+        if (!action.payload.items) {
+          state.showMore = false;
+        } else {
+          state.items = [...state.items, ...action.payload.items];
+        }
       })
       .addCase(loadMore.rejected, (state, action: PayloadAction<any>) => {
         state.loading = false;
         state.error = action.payload;
+        state.showMore = false;
       });
   },
 });

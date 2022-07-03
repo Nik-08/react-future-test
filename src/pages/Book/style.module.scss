@@ -53,12 +53,16 @@ $bookNameColor: #000;
 
 .book__page_categories {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .book__page_category {
   color: $categoryColor;
   font-size: 20px;
   padding-right: 15px;
+  white-space: nowrap;
+  line-height: 28px;
+
   &:last-of-type {
     padding-right: 0px;
   }

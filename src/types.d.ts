@@ -15,6 +15,7 @@ interface BooksState {
   searchQuery: string;
   startIndex: number;
   item: BookItem | null;
+  showMore: boolean;
 }
 
 interface BookItem {

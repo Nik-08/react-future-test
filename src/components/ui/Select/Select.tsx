@@ -12,17 +12,11 @@ interface SelectProps
 export const Select: FC<SelectProps> = ({ items, ...rest }) => {
   return (
     <select className={css.select} {...rest}>
-      {items.map((item, index) =>
-        item === "health" ? (
-          <option value={item} key={item + index}>
-            {item + " fitness"}
-          </option>
-        ) : (
-          <option value={item} key={item + index}>
-            {item}
-          </option>
-        )
-      )}
+      {items.map((item, index) => (
+        <option value={item} key={item + index}>
+          {item}
+        </option>
+      ))}
     </select>
   );
 };
