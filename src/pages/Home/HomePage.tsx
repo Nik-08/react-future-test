@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { BooksList } from "../../components";
 import { selectors } from "../../store/feature/books";
 import { search } from "../../store/feature/books/slice";
@@ -15,7 +15,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     dispatch(search());
-  }, [dispatch, orderBy, category]);
+  }, [dispatch, orderBy, category]); // При изменении категории делаю новый запрос
 
   return (
     <div className={css.main}>

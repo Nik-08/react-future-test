@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, FC, InputHTMLAttributes } from "react";
+import { DetailedHTMLProps, FC, InputHTMLAttributes } from "react";
 import css from "./style.module.scss";
 
 interface InputProps
