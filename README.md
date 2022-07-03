@@ -1,3 +1,6 @@
+## Book search app creating with Redux/React JS/TypeScript and google books Api.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
