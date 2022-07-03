@@ -1,0 +1,91 @@
+$wrapperBackground: #f1f1f1;
+$categoryColor: #6f6f6f;
+$authorsColor: rgb(179, 77, 0);
+$bookNameColor: #000;
+
+.book__page {
+  width: 100%;
+}
+
+.book__page_header {
+  padding: 5px;
+}
+
+.book__page_body {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid #f1f1f1;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.book__page_image {
+  max-width: 40%;
+  width: 100%;
+  background-color: $wrapperBackground;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
+
+  img {
+    max-width: 300px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    min-height: 300px;
+    object-fit: cover;
+  }
+}
+
+.book__page_content {
+  padding: 50px 30px;
+  max-width: 60%;
+  width: 100%;
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
+}
+
+.book__page_categories {
+  display: flex;
+}
+
+.book__page_category {
+  color: $categoryColor;
+  font-size: 20px;
+  padding-right: 15px;
+  &:last-of-type {
+    padding-right: 0px;
+  }
+}
+
+.book__page_name {
+  font-size: 40px;
+  padding: 10px 0;
+}
+
+.book__page_autors {
+  display: flex;
+
+  .book__page_autor {
+    padding-right: 15px;
+    color: $authorsColor;
+    font-size: 18px;
+    text-decoration: underline;
+    &:last-of-type {
+      padding-right: 0px;
+    }
+  }
+}
+
+.book__page_description {
+  font-size: 20px;
+  margin-top: 20px;
+  text-align: justify;
+  line-height: 25px;
+}
