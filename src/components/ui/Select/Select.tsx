@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, FC, SelectHTMLAttributes } from "react";
+import { DetailedHTMLProps, FC, SelectHTMLAttributes } from "react";
 import css from "./style.module.scss";
 
 interface SelectProps

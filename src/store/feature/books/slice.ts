@@ -13,7 +13,7 @@ if (
 const API_KEY = process.env.REACT_APP_API_KEY;
 const MAX_RESULT = process.env.REACT_APP_API_MAX_RESULT;
 
-const initialState: BooksState = {
+export const initialState: BooksState = {
   items: [],
   loading: false,
   error: null,
@@ -177,7 +177,6 @@ export const booksSlice = createSlice({
       .addCase(loadMore.fulfilled, (state, action: PayloadAction<any>) => {
         state.loading = false;
 
-        console.log(action.payload.items);
         if (!action.payload.items) {
           state.showMore = false;
         } else {

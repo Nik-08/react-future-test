@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import css from "../style.module.scss";
 import bookCover from "../../../assets/bookCover.png";
 

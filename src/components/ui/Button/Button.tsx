@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, DetailedHTMLProps, FC } from "react";
+import { ButtonHTMLAttributes, DetailedHTMLProps, FC } from "react";
 import css from "./style.module.scss";
 
 interface ButtonProps
