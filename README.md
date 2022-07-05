@@ -7,7 +7,7 @@ Book search app creating with Redux/React JS/TypeScript.
 
 1. clone the [repo](https://github.com/Nik-08/react-future-test) then go to the project dir.
 2. install dependencies with yarn or npm i.
-3. add .env file like in example .env.example
+3. add .env file like in example .env.example and add API KEY
 4. run the docker container 'docker-compose up'.
 
 App will be hosted on http://localhost:8000
