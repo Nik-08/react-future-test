@@ -7,9 +7,9 @@ export const Book: FC<BookItem> = ({ volumeInfo }) => {
     <div className={css.book__wrapper}>
       <div className={css.book__image}>
         {volumeInfo.imageLinks ? (
-          <img src={volumeInfo.imageLinks.smallThumbnail} alt='' />
+          <img src={volumeInfo.imageLinks.smallThumbnail} alt='Book Cover' />
         ) : (
-          <img src={bookCover} alt='' />
+          <img src={bookCover} alt='Book Cover' />
         )}
       </div>
       <div className={css.book__info}>

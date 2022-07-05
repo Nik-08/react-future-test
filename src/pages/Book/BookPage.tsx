@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { Button } from "../../components";
+import { Button, Spinner } from "../../components";
 import { selectors } from "../../store/feature/books";
 import { fetchSingleBook } from "../../store/feature/books/slice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
@@ -13,8 +13,9 @@ export const BookPage = () => {
   const dispatch = useAppDispatch();
   const { id } = useParams();
 
-  const { item } = useAppSelector((state: AppState) => ({
+  const { item, loading } = useAppSelector((state: AppState) => ({
     item: selectors.item(state),
+    loading: selectors.loading(state),
   }));
 
   useEffect(() => {
@@ -23,7 +24,13 @@ export const BookPage = () => {
 
   return (
     <div className={css.book__page}>
-      {item && (
+      {loading ? (
+        <div className={css.book__page_error}>
+          <Spinner />
+        </div>
+      ) : null}
+
+      {item && !loading && (
         <>
           <div className={css.book__page_header}>
             <Link to={"/"}>
@@ -33,9 +40,12 @@ export const BookPage = () => {
           <div className={css.book__page_body}>
             <div className={css.book__page_image}>
               {item.volumeInfo.imageLinks ? (
-                <img src={item.volumeInfo.imageLinks.smallThumbnail} alt='' />
+                <img
+                  src={item.volumeInfo.imageLinks.smallThumbnail}
+                  alt='Book Cover'
+                />
               ) : (
-                <img src={bookCover} alt='' />
+                <img src={bookCover} alt='Book Cover' />
               )}
             </div>
 

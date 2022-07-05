@@ -1,7 +1,7 @@
 ## Book search
 
 This is an app for finding books by Google Books API.
-Book search app creating with Redux/React JS/TypeScript and google books Api.
+Book search app creating with Redux/React JS/TypeScript.
 
 ## Getting started
 
