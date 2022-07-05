@@ -1,0 +1,88 @@
+$wrapperBackground: #f1f1f1;
+$categoryColor: #6f6f6f;
+$authorsColor: rgb(179, 77, 0);
+$bookNameColor: #000;
+
+// BooksList
+
+.books__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 50px 0;
+
+  @media (max-width: 350px) {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  }
+}
+
+// Book
+
+.book__wrapper {
+  width: 100%;
+  padding: 20px;
+  background: $wrapperBackground;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  height: 100%;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.book__image {
+  max-width: 200px;
+  width: 100%;
+  margin: 0 auto;
+
+  img {
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    min-height: 300px;
+    max-height: 300px;
+    object-fit: cover;
+  }
+}
+
+.book__info {
+  margin-top: 20px;
+  text-align: left;
+  .book__category {
+    font-size: 16px;
+    text-decoration: underline;
+    color: $categoryColor;
+    white-space: nowrap;
+  }
+
+  .book__name {
+    font-size: 22px;
+    color: $bookNameColor;
+    padding: 7px 0;
+  }
+
+  .book__authors {
+    font-size: 16px;
+  }
+  .book__autor {
+    padding-right: 10px;
+    color: $authorsColor;
+    text-decoration: underline;
+  }
+}
+
+.books__error {
+  font-size: 25px;
+  font-weight: bold;
+  color: $categoryColor;
+  margin-bottom: 30px;
+}
+
+.books__total {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: $categoryColor;
+}
