@@ -15,7 +15,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     dispatch(search());
-  }, [dispatch, orderBy, category]); // При изменении категории делаю новый запрос
+  }, [dispatch, orderBy, category]); // When category change, sending request
 
   return (
     <div className={css.main}>

@@ -21,7 +21,7 @@ export const BooksList: FC = () => {
 
   const showMoreHandler = useCallback(() => {
     dispatch(loadMore());
-  }, [dispatch]);
+  }, [dispatch]); //send request on click showMore button
 
   return (
     <>
@@ -39,7 +39,7 @@ export const BooksList: FC = () => {
         {loading ? <Spinner /> : null}
       </Container>
 
-      {showMore && (
+      {showMore && !loading && (
         <Button text={"Show More"} type='button' onClick={showMoreHandler} />
       )}
     </>

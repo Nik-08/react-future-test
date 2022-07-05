@@ -11,12 +11,9 @@ export const category = createSelector([state], ($state) => $state.category);
 export const orderBy = createSelector([state], ($state) => $state.orderBy);
 export const showMore = createSelector([state], ($state) => $state.showMore);
 
-export const startIndex = createSelector(
-  [state],
-  ($state) => $state.startIndex
-);
 export const searchQuery = createSelector(
   [state],
   ($state) => $state.searchQuery
 );
+
 export const item = createSelector([state], ($state) => $state.item);

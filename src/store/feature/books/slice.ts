@@ -38,7 +38,7 @@ const getUrlFromState = (state: RootState): URL => {
   const { category, orderBy, searchQuery, startIndex } = state.books;
   const url = new URL("books/v1/volumes", process.env.REACT_APP_API_BASE_URL);
   const filterCategory = category === "all" ? "" : `+subject:${category}`;
-  url.searchParams.append("q", (searchQuery || '""') + filterCategory); //Пустая строка или введенный запрос
+  url.searchParams.append("q", (searchQuery || '""') + filterCategory); // Empty string or searchQuery from Input
   url.searchParams.append("key", API_KEY!);
   url.searchParams.append("startIndex", String(startIndex));
   url.searchParams.append("maxResults", MAX_RESULT!);
@@ -47,7 +47,10 @@ const getUrlFromState = (state: RootState): URL => {
 };
 
 export const search = createAsyncThunk<
-  void,
+  {
+    items?: BookItem[];
+    totalItems: number;
+  },
   void,
   {
     rejectValue: string;
@@ -63,6 +66,7 @@ export const search = createAsyncThunk<
       const response = await client.get(url.href);
 
       if (!response) throw new Error("Server Error!");
+
       if (!response.data.items) throw new Error("No Books Found");
 
       return response.data;
@@ -73,7 +77,10 @@ export const search = createAsyncThunk<
 );
 
 export const loadMore = createAsyncThunk<
-  void,
+  {
+    items?: BookItem[];
+    totalItems: number;
+  },
   void,
   {
     rejectValue: string;
@@ -100,7 +107,7 @@ export const loadMore = createAsyncThunk<
 );
 
 export const fetchSingleBook = createAsyncThunk<
-  string,
+  BookItem,
   string,
   {
     rejectValue: string;
@@ -135,46 +142,42 @@ export const booksSlice = createSlice({
     setSearchQuery: (state, action: PayloadAction<string>) => {
       state.searchQuery = action.payload;
     },
-
-    setStartIndex: (state) => {
-      state.startIndex = state.startIndex + 30;
-    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(search.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
-      .addCase(search.fulfilled, (state, action: PayloadAction<any>) => {
+      .addCase(search.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = action.payload.items;
+        state.items = action.payload.items || [];
+
         state.total = action.payload.totalItems;
       })
-      .addCase(search.rejected, (state, action: PayloadAction<any>) => {
+      .addCase(search.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.showMore = false;
+        state.items = [];
+        state.error = String(action.payload);
       })
       .addCase(fetchSingleBook.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
-      .addCase(
-        fetchSingleBook.fulfilled,
-        (state, action: PayloadAction<any>) => {
-          state.loading = false;
-          state.item = action.payload;
-        }
-      )
-      .addCase(
-        fetchSingleBook.rejected,
-        (state, action: PayloadAction<any>) => {
-          state.loading = false;
-          state.error = action.payload;
-        }
-      )
+      .addCase(fetchSingleBook.fulfilled, (state, action) => {
+        state.loading = false;
+        state.item = action.payload;
+      })
+      .addCase(fetchSingleBook.rejected, (state, action) => {
+        state.loading = false;
+        state.error = String(action.payload);
+      })
       .addCase(loadMore.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
-      .addCase(loadMore.fulfilled, (state, action: PayloadAction<any>) => {
+      .addCase(loadMore.fulfilled, (state, action) => {
         state.loading = false;
 
         if (!action.payload.items) {
@@ -183,15 +186,14 @@ export const booksSlice = createSlice({
           state.items = [...state.items, ...action.payload.items];
         }
       })
-      .addCase(loadMore.rejected, (state, action: PayloadAction<any>) => {
+      .addCase(loadMore.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = String(action.payload);
         state.showMore = false;
       });
   },
 });
 
-export const { setCategories, setOrderBy, setSearchQuery, setStartIndex } =
-  booksSlice.actions;
+export const { setCategories, setOrderBy, setSearchQuery } = booksSlice.actions;
 
 export default booksSlice.reducer;
