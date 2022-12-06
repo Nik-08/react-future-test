@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/react-future-test/static/css/main.cdb9f54a.css",
+    "main.js": "/react-future-test/static/js/main.0e195519.js",
+    "static/js/787.130d602e.chunk.js": "/react-future-test/static/js/787.130d602e.chunk.js",
+    "static/media/bookCover.png": "/react-future-test/static/media/bookCover.caf70023c0f7f4f43fce.png",
+    "index.html": "/react-future-test/index.html",
+    "main.cdb9f54a.css.map": "/react-future-test/static/css/main.cdb9f54a.css.map",
+    "main.0e195519.js.map": "/react-future-test/static/js/main.0e195519.js.map",
+    "787.130d602e.chunk.js.map": "/react-future-test/static/js/787.130d602e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cdb9f54a.css",
+    "static/js/main.0e195519.js"
+  ]
+}
